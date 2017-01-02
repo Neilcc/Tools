@@ -3,6 +3,7 @@
 另一种是分治的理论，这一点是不理解的，
 做法是两两分块合并，最后在一起合并。形成的合并树应该是一个完全二叉树。跟从左到右合并的区别是什么？
 
+归并的trick在于，它后面是将有序序列做合并，整体比较次数将会下降。
 
 sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
 
