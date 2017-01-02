@@ -2,6 +2,7 @@ package com.zcc.puzzle;
 
 import org.junit.Test;
 
+import static com.zcc.puzzle.main.minWindow;
 import static org.junit.Assert.*;
 
 /**
@@ -13,5 +14,10 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
+    }
+
+    @Test
+    public void stringtest() {
+       String a = minWindow("bbaa", "aba");
     }
 }
