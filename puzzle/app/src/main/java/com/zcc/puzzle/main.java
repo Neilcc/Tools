@@ -1,8 +1,11 @@
 package com.zcc.puzzle;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * Created by Hengyun on 2017/1/2.
@@ -20,8 +23,15 @@ public class main {
 //        System.out.print(a);
 //        isPalindrome("0P");
 
-        List<List<String>> answer = solveNQueens(8);
-        System.out.print(answer);
+//        List<List<String>> answer = solveNQueens(8);
+//        PriorityQueue<Integer> queue = new PriorityQueue<Integer>(9, new Comparator<Integer>() {
+//            @Override
+//            public int compare(Integer lhs, Integer rhs) {
+//                return lhs -rhs;
+//            }
+//        });
+        Solution solution = new Solution();
+        System.out.print(solution.toHex(-1));
     }
 
     public static String minWindow(String s, String t) {
@@ -195,4 +205,34 @@ public class main {
         return true;
     }
 
+
+    public static class Solution {
+        private final int Mask = 15;
+        private String result= "";
+        public String toHex(int num) {
+//            if(num < 0){
+//                num = (-num)^0xffffffff + 1;
+//            }
+            int i = num;
+            while ((i ^ Mask) > 0){
+                i = getNumber(i);
+            }
+            return result = getHex(i) + result;
+        }
+
+        private int getNumber(int num){
+            int rest = num>>4;
+            result = getHex (num & Mask) + result;
+            return rest;
+
+        }
+
+        private String getHex(int num){
+            if(num<10){
+                return num+"";
+            }else{
+                return (char)(num-10 + ((int)'a')) + "";
+            }
+        }
+    }
 }
