@@ -2,7 +2,7 @@ package com.zcc.puzzle;
 
 import org.junit.Test;
 
-import static com.zcc.puzzle.main.minWindow;
+import static com.zcc.puzzle.Puzzle.minWindow;
 import static org.junit.Assert.*;
 
 /**
