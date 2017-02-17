@@ -5,22 +5,20 @@ package com.zcc.puzzle.resource;
  */
 
 public class ResourceManager {
-
     private final int MAX_SIZE;
     private final Object MUTEX = new Object();
-    private volatile int mGoodsAmount = 0;
+    private ResourcePool resourcePool;
 
     public ResourceManager(int MAX_SIZE) {
         this.MAX_SIZE = MAX_SIZE;
+        resourcePool = new ResourcePool();
     }
 
     public int addOneGoodsBlock() {
         while (true) {
             synchronized (MUTEX) {
-                if (mGoodsAmount < MAX_SIZE) {
-                    ++mGoodsAmount;
-                    System.out.print("one goods added " + "now we have" + mGoodsAmount + "\n");
-                    return mGoodsAmount;
+                if (resourcePool.getmGoodsAmount() < MAX_SIZE) {
+                    return resourcePool.addOneGoods();
                 }
             }
             try {
@@ -34,10 +32,8 @@ public class ResourceManager {
     public int useOneGoodsBlock() {
         while (true) {
             synchronized (MUTEX) {
-                if (mGoodsAmount > 0) {
-                    --mGoodsAmount;
-                    System.out.print("one goods used " + "now we have" + mGoodsAmount + "\n");
-                    return mGoodsAmount;
+                if (resourcePool.getmGoodsAmount() > 0) {
+                    return resourcePool.useOneGoods();
                 }
             }
             try {
@@ -45,6 +41,30 @@ public class ResourceManager {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private static class ResourcePool {
+
+        private volatile int mGoodsAmount = 0;
+
+        ResourcePool() {
+        }
+
+        int addOneGoods() {
+            ++mGoodsAmount;
+            System.out.print("one goods added " + "now we have" + mGoodsAmount + "\n");
+            return mGoodsAmount;
+        }
+
+        int useOneGoods() {
+            --mGoodsAmount;
+            System.out.print("one goods used " + "now we have" + mGoodsAmount + "\n");
+            return mGoodsAmount;
+        }
+
+        int getmGoodsAmount() {
+            return mGoodsAmount;
         }
     }
 }
