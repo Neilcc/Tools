@@ -3,6 +3,7 @@ package com.zcc.puzzle.problems;
 import java.util.Arrays;
 
 public class HandOfStraights {
+    // 简化逻辑的方法是找个哈希表存着 然后一个一个算 不过那样空间复杂度比较高 时间复杂度差不多
     public static int[] in = new int[]{
             1, 2, 3, 6, 2, 3, 4, 7, 8
     };
@@ -68,4 +69,5 @@ public class HandOfStraights {
             return true;
         }
     }
+
 }
