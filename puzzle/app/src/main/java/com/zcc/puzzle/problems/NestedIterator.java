@@ -132,7 +132,7 @@ public class NestedIterator {
                     } else {
                         ll = new NestedIteratorr(nestedList.get(p).getList());
                         p++;
-                        return ll.hasNext() || hasNext();
+                        return ll.hasNext()|| hasNext();
                     }
                 }
             } else if (ll != null && ll.hasNext()) {
