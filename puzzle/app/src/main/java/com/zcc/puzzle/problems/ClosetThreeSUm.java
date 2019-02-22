@@ -1,6 +1,8 @@
 package com.zcc.puzzle.problems;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class ClosetThreeSUm {
 
@@ -14,6 +16,19 @@ public class ClosetThreeSUm {
         };
         int ret = closetThreeSUm.threeSumClosest(input, 0);
         System.out.print(closetThreeSUm.sum);
+
+        PriorityQueue<Integer> q = new PriorityQueue<Integer>(10, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer lhs, Integer rhs) {
+                return rhs - lhs;
+            }
+        });
+        q.add(1);
+        q.add(3);
+        q.add(4);
+        q.add(2);
+        System.out.print(q.poll());
+        System.out.print(q.poll());
     }
 
     public int threeSumClosest(int[] nums, int target) {
