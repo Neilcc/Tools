@@ -53,4 +53,17 @@ public class TestFeature {
     public static void change2(int i) {
         i++;
     }
+
+    public class testa {
+        public void doa() {
+            final Object temp = new Object();
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    System.out.print(temp.toString());
+                }
+            };
+            runnable.run();
+        }
+    }
 }
