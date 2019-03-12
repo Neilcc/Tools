@@ -1,15 +1,9 @@
 package com.zcc.puzzle;
 
-import com.zcc.puzzle.problems.AddTwoString;
-import com.zcc.puzzle.problems.CaculateABit;
-import com.zcc.puzzle.problems.FindInsertPosition;
-
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
 
 /**
  * Created by Hengyun on 2017/1/2.
@@ -22,9 +16,11 @@ public class main {
     private static List<List<String>> results = new ArrayList<>();
 
     public static void main(String[] args) {
-        int[]  p = new int [1];
-        p[0] =1 ;
-        System.out.print(new CaculateABit().hammingWeight(2));
+//        int[]  p = new int [1];
+//        p[0] =1 ;
+//        System.out.print(new CaculateABit().hammingWeight(2));
+        char[] ss = new char[]{'1', '2', '3'};
+        System.out.print(String.valueOf(ss));
     }
 
     public static String minWindow(String s, String t) {
@@ -201,30 +197,31 @@ public class main {
 
     public static class Solution {
         private final int Mask = 15;
-        private String result= "";
+        private String result = "";
+
         public String toHex(int num) {
 //            if(num < 0){
 //                num = (-num)^0xffffffff + 1;
 //            }
             int i = num;
-            while ((i ^ Mask) > 0){
+            while ((i ^ Mask) > 0) {
                 i = getNumber(i);
             }
             return result = getHex(i) + result;
         }
 
-        private int getNumber(int num){
-            int rest = num>>4;
-            result = getHex (num & Mask) + result;
+        private int getNumber(int num) {
+            int rest = num >> 4;
+            result = getHex(num & Mask) + result;
             return rest;
 
         }
 
-        private String getHex(int num){
-            if(num<10){
-                return num+"";
-            }else{
-                return (char)(num-10 + ((int)'a')) + "";
+        private String getHex(int num) {
+            if (num < 10) {
+                return num + "";
+            } else {
+                return (char) (num - 10 + ((int) 'a')) + "";
             }
         }
     }
