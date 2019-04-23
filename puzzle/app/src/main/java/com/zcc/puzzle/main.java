@@ -19,8 +19,16 @@ public class main {
 //        int[]  p = new int [1];
 //        p[0] =1 ;
 //        System.out.print(new CaculateABit().hammingWeight(2));
-        char[] ss = new char[]{'1', '2', '3'};
-        System.out.print(String.valueOf(ss));
+//        char[] ss = new char[]{'1', '2', '3'};
+//        System.out.print(String.valueOf(ss));
+        Object a = new Object();
+        System.out.print(a);
+        change(a);
+        System.out.print(a);
+    }
+
+    public static void change (Object b){
+        b = new Object();
     }
 
     public static String minWindow(String s, String t) {
