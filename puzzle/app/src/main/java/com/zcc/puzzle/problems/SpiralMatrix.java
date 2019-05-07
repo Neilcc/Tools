@@ -5,6 +5,7 @@ public class SpiralMatrix {
     public static void main(String[] args){
         SpiralMatrix spiralMatrix = new SpiralMatrix();
         spiralMatrix.generateMatrix(3);
+        System.out.println((-2 %2));
     }
 
     public int[][] generateMatrix(int n) {
