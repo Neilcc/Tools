@@ -15,6 +15,7 @@ public class main {
     private static HashMap<Character, Integer> ts = new HashMap<>();
     private static List<List<String>> results = new ArrayList<>();
 
+
     public static void main(String[] args) {
 //        int[]  p = new int [1];
 //        p[0] =1 ;
