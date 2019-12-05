@@ -9,9 +9,6 @@ import java.util.Queue;
  * Created by cc on 2019-11-26.
  */
 public class Codec {
-    private static final char NULL = '#';
-    private static final char LEVEL = '@';
-    private static final char DIV = '~';
 
     public static void main(String[] args) {
         Codec c = new Codec();
@@ -23,7 +20,12 @@ public class Codec {
         t.right.right = new TreeNode(5);
         String val = c.serialize(t);
         c.deserialize(val);
+        Math.random();
+        String ss ="";
     }
+
+    private static final char NULL = '#';
+    private static final char DIV = '~';
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
@@ -34,8 +36,8 @@ public class Codec {
         travel(ret, root, 0, height);
         String retS = "";
         for (String ss : ret) {
-            if (retS.length() > 0) {
-                retS += LEVEL;
+            if(!retS.isEmpty()){
+                retS+=DIV;
             }
             retS += ss;
         }
@@ -46,18 +48,17 @@ public class Codec {
     public TreeNode deserialize(String data) {
         if (data == null || data.length() == 0)
             return null;
-        String[] levels = data.split(LEVEL + "");
         Queue<String> tree = new LinkedList<String>();
-        for (int i = 0; i < levels.length; i++) {
-            if (!levels[i].contains(DIV + "")) {
-                tree.add(levels[i]);
-                continue;
-            }
-            String[] nodes = levels[i].split(DIV + "");
-            for (String nn : nodes) {
-                tree.add(nn);
+        String valS = "";
+        for (char c : data.toCharArray()) {
+            if (c != DIV) {
+                valS += c;
+            } else {
+                tree.add(valS);
+                valS = "";
             }
         }
+        tree.add(valS);
         Queue<TreeNode> levelNodes = new LinkedList<TreeNode>();
         String val = tree.poll();
         TreeNode root = new TreeNode(Integer.valueOf(val));
